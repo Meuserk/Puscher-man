@@ -23,8 +23,10 @@ public class Polizei_L3 extends Polizei{
             //greenfoot.Greenfoot.setWorld(new GameOver());
         }
         
+        //falls die Polizei von der Straße abkommt
         if(atWorldEdge()){
-            turn(180);
+            setRotation(180);
+            setLocation(1300,650);
         }
         
         

@@ -39,12 +39,12 @@ public class MyWorld extends World{
         addObject(turnF,720,395);
         Kreuzung turnG = new Kreuzung();
         addObject(turnG,720,650);
-        Kreuzung turnH = new Kreuzung();
-        addObject(turnH,994,650);
         Kreuzung turnJ = new Kreuzung();
         addObject(turnJ,1191,395);
         Kreuzung turnO = new Kreuzung();
         addObject(turnO,1191,650);
+        Kreuzung turnM = new Kreuzung();
+        addObject(turnM,1532,395);
 
         //kann nicht nach oben fahren
         KreuzungA turnA = new KreuzungA();
@@ -63,48 +63,67 @@ public class MyWorld extends World{
         addObject(turnD,341,650);
         KreuzungB turnQ = new KreuzungB();
         addObject(turnQ,341,395);
+        KreuzungB turnH = new KreuzungB();
+        addObject(turnH,994,650);
 
         //kann nicht nach rechts fahren
         KreuzungC turnK = new KreuzungC();
         addObject(turnK,1191,115);
-        KreuzungC turnL = new KreuzungC();
-        addObject(turnL,1532,115);
-        KreuzungC turnM = new KreuzungC();
-        addObject(turnM,1532,395);
-        KreuzungC turnN = new KreuzungC();
-        addObject(turnN,1532,650);
+        //KreuzungC turnT = new KreuzungC();
+        //addObject(turnT,1191,875);
+        //KreuzungC turnL = new KreuzungC();
+        //addObject(turnL,1532,115);
+        
+        
+        //kann nicht nach links fahren
+        KreuzungE turnR = new KreuzungE();
+        addObject(turnR,1532,875);
+        KreuzungE turnS = new KreuzungE();
+        addObject(turnS,1532,650);
+        KreuzungE turnU = new KreuzungE();
+        addObject(turnU,720,875);
+        
 
         //umdrehen
         //KreuzungD turnaroundA = new KreuzungD();
         //addObject(turnaroundA,245,35);
-        KreuzungD turnaroundB = new KreuzungD();
-        addObject(turnaroundB,341,35);
+        
         KreuzungD turnaroundC = new KreuzungD();
         addObject(turnaroundC,35,115);
         KreuzungD turnaroundD = new KreuzungD();
         addObject(turnaroundD,35,395);
         KreuzungD turnaroundE = new KreuzungD();
         addObject(turnaroundE,130,650);
-        KreuzungD turnaroundF = new KreuzungD();
-        addObject(turnaroundF,245,750);
+        
         //KreuzungD turnaroundG = new KreuzungD();
         //addObject(turnaroundG,341,750);
         KreuzungD turnaroundH = new KreuzungD();
         addObject(turnaroundH,720,35);
         KreuzungD turnaroundI = new KreuzungD();
-        addObject(turnaroundI,720,750);
+        addObject(turnaroundI,720,990);
         KreuzungD turnaroundJ = new KreuzungD();
-        addObject(turnaroundJ,994,750);
+        addObject(turnaroundJ,1700,875); //turnaround unten rechts
         KreuzungD turnaroundK = new KreuzungD();
         addObject(turnaroundK,1191,35);
         KreuzungD turnaroundL = new KreuzungD();
-        addObject(turnaroundL,1191,750);
+        addObject(turnaroundL,1191,990);
         KreuzungD turnaroundM = new KreuzungD();
         addObject(turnaroundM,1532,35);
         KreuzungD turnaroundN = new KreuzungD();
-        addObject(turnaroundN,1532,750);
+        addObject(turnaroundN,1532,990);
         KreuzungD turnaroundO = new KreuzungD();
-        addObject(turnaroundO,1260,650);
+        addObject(turnaroundO,1400,650);
+        KreuzungD turnaroundP = new KreuzungD();
+        addObject(turnaroundP,1700,650);
+        KreuzungD turnaroundQ = new KreuzungD();
+        addObject(turnaroundQ,1700,395);
+        KreuzungD turnaroundR = new KreuzungD();
+        addObject(turnaroundR,1130,875);
+        
+        KreuzungF turnaroundB = new KreuzungF();
+        addObject(turnaroundB,341,35);
+        KreuzungF turnaroundF = new KreuzungF();
+        addObject(turnaroundF,245,990);
 
         /**Hindernisse werden hinzugefuegt und 
          * auf die richtigen größen gebracht
@@ -217,11 +236,13 @@ public class MyWorld extends World{
         Spieler spieler = new Spieler(5);
         addObject(spieler,1116,867);
 
+        Dealer dealer = new Dealer();
+        addObject(dealer, 100, 100);
+
         Paket paket = new Paket();
         addObject(paket,826,78);
-
-        Dealer dealer = new Dealer();
-        addObject(dealer,208,673);
+        Polizei_L1 polizei_L1 = new Polizei_L1();
+        addObject(polizei_L1,1087,399);
     }
 
     public void showPacketLabel()   {

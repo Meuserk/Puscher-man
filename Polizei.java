@@ -4,7 +4,6 @@ public class Polizei extends Person{
 
     public void act(){
         move();
-        // Add your action code here.
         
     }
 
@@ -12,6 +11,14 @@ public class Polizei extends Person{
         double angle = Math.toRadians( getRotation() );
         int x = (int) Math.round(getX() + Math.cos(angle) * speed);
         int y = (int) Math.round(getY() + Math.sin(angle) * speed);
+        
+        setLocation(x, y);   
+    }
+    
+    public void moveByPixel(int pixel){
+        double angle = Math.toRadians( getRotation() );
+        int x = (int) Math.round(getX() + Math.cos(angle) * pixel);
+        int y = (int) Math.round(getY() + Math.sin(angle) * pixel);
         
         setLocation(x, y);   
     }
@@ -28,33 +35,17 @@ public class Polizei extends Person{
         }
     }
     
-    //private int counter = 30;
-    
-    /*if(doWeExecute() == true){
-            anKreuzungWenden();
-        }
-        private boolean doWeExecute(){
-        for(int i = counter; i < 50; i++){
-            return false;
-        }
-    */
+
     public void anKreuzungWenden(){
-        
-        /*
-         * Die Idee hier: Ich will anKreuzungWenden() nicht zu oft ausführen. Deshalb setze 
-         * ich jedes mal, wenn ich etwas sehe, den counter auf 0 um zu warten, bis ich mich
-         * von der Kreuzung entfernt habe
-         *
-        counter++;
-        if (counter < 30){
-            return;
-        }*/
+        int pixelNachTurn = 22;
+        int pixelVorTurn = 22;
     //hier wird das Wenden geregelt, basierend darauf, gegen welche Kreuzung
         //sie rennen
         //Zero degrees is towards the east, increases clockwise
         
         //kann in jede Richtung fahren
         if(canSee(Kreuzung.class)){
+            moveByPixel(pixelVorTurn);
             switch(Greenfoot.getRandomNumber(4)){
                 case 0:
                     setRotation(0);
@@ -69,11 +60,12 @@ public class Polizei extends Person{
                     setRotation(270);
                     break;
             }
-            //counter = 0;
+            moveByPixel(pixelNachTurn);
         }
         
         //kann nicht nach oben, also nicht nach 270 grad
         else if(canSee(KreuzungA.class)){
+            moveByPixel(pixelVorTurn);
             switch(Greenfoot.getRandomNumber(3)){
                 case 0:
                     setRotation(0);
@@ -85,11 +77,12 @@ public class Polizei extends Person{
                     setRotation(180);
                     break;
             }
-            //counter = 0;
+            moveByPixel(pixelNachTurn);
         }
         
         //kann nicht nach unten, also nicht nach 90 grad
         else if(canSee(KreuzungB.class)){
+            moveByPixel(pixelVorTurn);
             switch(Greenfoot.getRandomNumber(3)){
                 case 0:
                     setRotation(0);
@@ -101,11 +94,12 @@ public class Polizei extends Person{
                     setRotation(270);
                     break;
             }
-            //counter = 0;
+            moveByPixel(pixelNachTurn);
         }
         
         //kann nicht nach Rechts, also nicht nach 0 grad
         else if(canSee(KreuzungC.class)){
+            moveByPixel(pixelVorTurn);
             switch(Greenfoot.getRandomNumber(3)){
                 case 0:
                     setRotation(90);
@@ -117,12 +111,39 @@ public class Polizei extends Person{
                     setRotation(270);
                     break;
             }
-            //counter = 0;
+            moveByPixel(pixelNachTurn);
+        }
+        
+        //kann nicht nach links, also nach 180
+        else if(canSee(KreuzungE.class)){
+            moveByPixel(pixelVorTurn);
+            switch(Greenfoot.getRandomNumber(3)){
+                case 0:
+                    setRotation(90);
+                    break;
+                case 1:
+                    setRotation(0);
+                    break;
+                case 2:
+                    setRotation(270);
+                    break;
+                }
+            moveByPixel(pixelNachTurn);
+        }
+        
+        //Wendeaktion am Ende vom Highway
+        else if(canSee(KreuzungF.class)){
+            setRotation(getRotation()-90);
+            moveByPixel(96); //warum 96? so breit ist halt die Straße
+            setRotation(getRotation()-90);
         }
         
         //wenden, weil dead end
         else if(canSee(KreuzungD.class)){
+            
             setRotation(getRotation()+180);
+            moveByPixel(10);
+
         }
         
         else{}
