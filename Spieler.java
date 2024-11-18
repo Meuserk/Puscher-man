@@ -39,52 +39,52 @@ public class Spieler extends Person{
 
                 switch (Position) {
                     case 1-1:
-                        world.addObject(new Dealer(), 208, 129);
+                        world.addObject(new Dealer(100,100), 208, 129);
                         break;
                         //klappt
                         
                     case 2-1:
-                        world.addObject(new Dealer(), 372, 409);
+                        world.addObject(new Dealer(100,100), 372, 409);
                         break;
                         //klappt
 
                     case 3-1:
-                        world.addObject(new Dealer(), 687, 660);
+                        world.addObject(new Dealer(100,100), 687, 660);
                         break;
                         //klappt
                         
                     case 4-1:
-                        world.addObject(new Dealer(), 1168, 960);                        
+                        world.addObject(new Dealer(100,100), 1168, 960);                        
                         break;
                         //klappt
 
                     case 5-1:
-                        world.addObject(new Dealer(), 1497, 123);
+                        world.addObject(new Dealer(100,100), 1497, 123);
                         break;
                         //klappt
                         
                     case 6-1:
-                        world.addObject(new Dealer(), 1572,416);
+                        world.addObject(new Dealer(100,100), 1572,416);
                         break;
                         //klappt
 
                     case 7-1:
-                        world.addObject(new Dealer(), 1569,888);
+                        world.addObject(new Dealer(100,100), 1569,888);
                         break;
                         //klappt
                         
                     case 8-1:
-                        world.addObject(new Dealer(), 1152,132);
+                        world.addObject(new Dealer(100,100), 1152,132);
                         break;
                         //klappt
 
                     case 9-1:
-                        world.addObject(new Dealer(), 1021,417);
+                        world.addObject(new Dealer(100,100), 1021,417);
                         break;
                         //klappt
                         
                     case 10-1:
-                        world.addObject(new Dealer(), 208,673);
+                        world.addObject(new Dealer(100,100), 208,673);
                         break;
                         //klappt
                 }

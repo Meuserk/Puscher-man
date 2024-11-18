@@ -236,8 +236,8 @@ public class MyWorld extends World{
         Spieler spieler = new Spieler(5);
         addObject(spieler,1116,867);
 
-        Dealer dealer = new Dealer();
-        addObject(dealer, 100, 100);
+        Dealer dealer = new Dealer(100,100);
+        addObject(dealer, 208, 129);
 
         Paket paket = new Paket(75,75);
         addObject(paket,826,78);
