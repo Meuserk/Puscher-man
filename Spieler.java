@@ -88,7 +88,7 @@ public class Spieler extends Person{
                         break;
                         //klappt
                 }
-                world.addObject(new Paket(), 826, 78);
+                world.addObject(new Paket(75,75), 826, 78);
             }
 
             checkKeyPress();
