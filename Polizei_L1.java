@@ -12,6 +12,11 @@ public class Polizei_L1 extends Polizei{
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public int counter = 0;
+    public Polizei_L1(int x, int y){
+        GreenfootImage image = getImage();   // Holt das aktuelle Bild des Objekts
+        image.scale(x, y);               // Skalieren des Bildes auf 100x100 Pixel
+        setImage(image);                     // Setzt das skalierte Bild zurück auf das Objekt
+    }
     public void act(){
         int x = getX();  // Gibt die X-Koordinate des Objekts zurück
         int y = getY();  // Gibt die Y-Koordinate des Objekts zurück
