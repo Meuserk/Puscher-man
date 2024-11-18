@@ -2,7 +2,7 @@
 class.Dealer.image=Kunde.png
 class.MyWorld.image=PushermapFinalV1.png
 class.Objekt.image=leer.png
-class.Paket.image=barrel.png
+class.Paket.image=drogenpaket.png
 class.Person.image=Unbenannt.png
 class.Spieler.image=Dealer.png
 dependency1.from=MyWorld
