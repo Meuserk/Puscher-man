@@ -242,7 +242,7 @@ public class MyWorld extends World{
         Paket paket = new Paket(75,75);
         addObject(paket,826,78);
         
-        Polizei_L1 polizei_L1 = new Polizei_L1();
+        Polizei_L1 polizei_L1 = new Polizei_L1(100,100);
         addObject(polizei_L1,1087,399);
     }
 
