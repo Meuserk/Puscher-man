@@ -9,9 +9,11 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class MyWorld extends World{
 
 
-
+    private int packetCount;
     private Label packetLabel;  // Label für "Package received"
     private Label moneyLabel;   // Label für "Money"
+    private Label2 levelLabel;
+    private Spieler spieler;
     private int count;
     public int score;
     /**
@@ -258,17 +260,31 @@ public class MyWorld extends World{
     }
     public void Score ()    {
         score = 0;
+        packetCount= 0;
         moneyLabel = new Label ("Money: "+ count +" $");
         addObject(moneyLabel, 80, 50);
     }
     public void updateScore(int points)    {
         score += points; // Geld erhöhen
+        packetCount += 1;
         moneyLabel.setText("Money: " + score +" $");
+        if (packetCount ==1)    {
+            score = 0;
+            levelLabel = new Label2("Level 2");
+            addObject(levelLabel, 858,423);
+            Greenfoot.delay(100);
+            removeObject(levelLabel);
+            moneyLabel.setText("Money: " + score + " $");
+        }
+        if (packetCount ==6)    {
+            score = 0;
+            moneyLabel.setText("Money: " + score + " $");
+        }
+        if (packetCount ==9)    {
+            score = 0;
+            packetCount = 0;
+            moneyLabel.setText("Money: " + score + " $");
+        }
     }
-
-    // public static void removeDealer() {
-    //     removeObject(dealer);
-    //     Dealer dealer = new Dealer();
-       
-    // }
+    
 }
