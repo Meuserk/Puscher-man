@@ -1,7 +1,7 @@
 #Greenfoot project file
 class.Dealer.image=Kunde.png
 class.MyWorld.image=PushermapFinalV1.png
-class.Objekt.image=leer.png
+class.Objekt.image=Unbenannt.png
 class.Paket.image=drogenpaket.png
 class.Person.image=Unbenannt.png
 class.Polizei_L1.image=PolicecarV2.png
@@ -262,4 +262,4 @@ version=3.1.0
 width=1550
 world.lastInstantiated=MyWorld
 xPosition=0
-yPosition=97
+yPosition=0
