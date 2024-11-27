@@ -1,4 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.util.*;
 
 /**
  * Write a description of class MyWorld here.
@@ -14,8 +15,11 @@ public class MyWorld extends World{
     private Label moneyLabel;   // Label für "Money"
     private Label2 levelLabel;
     private Spieler spieler;
+    private Polizei[] polizeis; // Declare the array
     private int count;
     public int score;
+    
+    
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -24,8 +28,21 @@ public class MyWorld extends World{
         // Create a new world with 1730x1024 cells with a cell size of 1x1 pixels. 
         super(1730, 1024, 1); 
         packetLabel = new Label ("Package received!"); //Label wird initialisiert
+        // Initialize the array with a size of 10
+        polizeis = new Polizei[10];
+
+        // Populate the array with 7 Polizei_l1 and 3 Polizei_l2
+        for (int i = 0; i < 7; i++) {
+            polizeis[i] = new Polizei_L1(100,100);
+        }
+
+        for (int i = 7; i < 10; i++) {
+            polizeis[i] = new Polizei_L2();
+        }
+
         Score();
         prepare();
+        
         
     }
     
@@ -75,8 +92,7 @@ public class MyWorld extends World{
         //addObject(turnT,1191,875);
         //KreuzungC turnL = new KreuzungC();
         //addObject(turnL,1532,115);
-        
-        
+
         //kann nicht nach links fahren
         KreuzungE turnR = new KreuzungE();
         addObject(turnR,1532,875);
@@ -84,19 +100,18 @@ public class MyWorld extends World{
         addObject(turnS,1532,650);
         KreuzungE turnU = new KreuzungE();
         addObject(turnU,720,875);
-        
 
         //umdrehen
         //KreuzungD turnaroundA = new KreuzungD();
         //addObject(turnaroundA,245,35);
-        
+
         KreuzungD turnaroundC = new KreuzungD();
         addObject(turnaroundC,35,115);
         KreuzungD turnaroundD = new KreuzungD();
         addObject(turnaroundD,35,395);
         KreuzungD turnaroundE = new KreuzungD();
         addObject(turnaroundE,130,650);
-        
+
         //KreuzungD turnaroundG = new KreuzungD();
         //addObject(turnaroundG,341,750);
         KreuzungD turnaroundH = new KreuzungD();
@@ -121,7 +136,7 @@ public class MyWorld extends World{
         addObject(turnaroundQ,1700,395);
         KreuzungD turnaroundR = new KreuzungD();
         addObject(turnaroundR,1130,875);
-        
+
         KreuzungF turnaroundB = new KreuzungF();
         addObject(turnaroundB,341,35);
         KreuzungF turnaroundF = new KreuzungF();
@@ -235,7 +250,7 @@ public class MyWorld extends World{
         Objekt objekt6_6 = new Objekt(200,140);
         addObject(objekt6_6,1658,966);
 
-        Spieler spieler = new Spieler(5);
+        spieler = new Spieler(5);
         addObject(spieler,1116,867);
 
         Dealer dealer = new Dealer(100,100);
@@ -243,9 +258,12 @@ public class MyWorld extends World{
 
         Paket paket = new Paket(75,75);
         addObject(paket,826,78);
+
+        // Add the first three Polizei objects to the map at specific coordinates
+        addObject(polizeis[0], 1380,650);
+        addObject(polizeis[1], 1380,650);
+        addObject(polizeis[2], 1380,650);
         
-        Polizei_L1 polizei_L1 = new Polizei_L1(100,100);
-        addObject(polizei_L1,1087,399);
     }
 
     public void showPacketLabel()   {
@@ -275,6 +293,22 @@ public class MyWorld extends World{
             Greenfoot.delay(100);
             removeObject(levelLabel);
             moneyLabel.setText("Money: " + score + " $");
+            //removeObject(spieler);
+            //Spieler spieler = new Spieler(5);
+            // addObject(spieler,1116,867);
+            //removeObject(dealer);
+            spieler.setLocation(1116,867);
+            spieler.setLocation(1116,867);
+            spieler.setLocation(1116,867);
+            //polizei_L1_1.setRotation(180);
+            //addObject(polizei_L1_1, 1300,650);
+            //polizei_L1_1.setLocation(1187,400);
+            polizeis[0].setLocation(1380,650);
+            polizeis[0].setRotation(0);
+            polizeis[1].setLocation(1380,650);
+            polizeis[1].setRotation(0);
+            polizeis[2].setLocation(1380,650);
+            polizeis[2].setRotation(0);
         }
         if (packetCount ==6)    {
             score = 0;
