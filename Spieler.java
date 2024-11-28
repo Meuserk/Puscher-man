@@ -32,6 +32,7 @@ public class Spieler extends Person{
         }
         if (isTouching(Dealer.class) && hatPaket)   {
             MyWorld world = (MyWorld) getWorld();
+            removeTouching(Dealer.class);
             world.updateScore(100);
             hatPaket = false; //Paketstatus zurücksetzen
             world.hidePacketLabel();

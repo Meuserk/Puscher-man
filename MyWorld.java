@@ -13,7 +13,7 @@ public class MyWorld extends World{
     private int packetCount;
     private Label packetLabel;  // Label für "Package received"
     private Label moneyLabel;   // Label für "Money"
-    private Label2 levelLabel;
+    private Label_Level levelLabel;
     private Spieler spieler;
     private Polizei[] polizeis; // Declare the array
     private int count;
@@ -37,7 +37,7 @@ public class MyWorld extends World{
         }
 
         for (int i = 7; i < 10; i++) {
-            polizeis[i] = new Polizei_L2();
+            polizeis[i] = new Polizei_L2(100,100);
         }
 
         Score();
@@ -250,7 +250,7 @@ public class MyWorld extends World{
         Objekt objekt6_6 = new Objekt(200,140);
         addObject(objekt6_6,1658,966);
 
-        spieler = new Spieler(5);
+        spieler = new Spieler(15);
         addObject(spieler,1116,867);
 
         Dealer dealer = new Dealer(100,100);
@@ -282,42 +282,103 @@ public class MyWorld extends World{
         moneyLabel = new Label ("Money: "+ count +" $");
         addObject(moneyLabel, 80, 50);
     }
-    public void updateScore(int points)    {
-        score += points; // Geld erhöhen
+    public void updateScore(int points) {
+        // Erhöht den Punktestand um die übergebenen Punkte
+        score += points;
+        // Erhöht die Anzahl der Pakete um 1
         packetCount += 1;
-        moneyLabel.setText("Money: " + score +" $");
-        if (packetCount ==1)    {
+        // Aktualisiert das Geld-Label mit dem neuen Punktestand
+        moneyLabel.setText("Money: " + score + " $");
+
+        // Überprüft, ob die Anzahl der Pakete 3 erreicht hat
+        if (packetCount == 3) {
+            // Setzt den Punktestand zurück
             score = 0;
-            levelLabel = new Label2("Level 2");
-            addObject(levelLabel, 858,423);
+            // Erstellt ein neues Level-Label für Level 2
+            levelLabel = new Label_Level("Level 2");
+            // Fügt das Level-Label zur Welt hinzu
+            addObject(levelLabel, 858, 423);
+            // Verzögert das Spiel um 100 Frames
             Greenfoot.delay(100);
+            // Entfernt das Level-Label aus der Welt
             removeObject(levelLabel);
+            // Aktualisiert das Geld-Label mit dem zurückgesetzten Punktestand
             moneyLabel.setText("Money: " + score + " $");
-            //removeObject(spieler);
-            //Spieler spieler = new Spieler(5);
-            // addObject(spieler,1116,867);
-            //removeObject(dealer);
-            spieler.setLocation(1116,867);
-            spieler.setLocation(1116,867);
-            spieler.setLocation(1116,867);
-            //polizei_L1_1.setRotation(180);
-            //addObject(polizei_L1_1, 1300,650);
-            //polizei_L1_1.setLocation(1187,400);
-            polizeis[0].setLocation(1380,650);
+            // Setzt die Position des Spielers
+            spieler.setLocation(1116, 867);
+            // Setzt die Position und Rotation der Polizeifiguren
+            polizeis[0].setLocation(1380, 650);
             polizeis[0].setRotation(0);
-            polizeis[1].setLocation(1380,650);
+            polizeis[1].setLocation(1380, 650);
             polizeis[1].setRotation(0);
-            polizeis[2].setLocation(1380,650);
+            polizeis[2].setLocation(1380, 650);
             polizeis[2].setRotation(0);
+            addObject(polizeis[3], 1380,650);
+            polizeis[3].setRotation(0);
         }
-        if (packetCount ==6)    {
+
+        // Überprüft, ob die Anzahl der Pakete 6 erreicht hat
+        if (packetCount == 6) {
+            // Setzt den Punktestand zurück
             score = 0;
+            // Erstellt ein neues Level-Label für Level 3
+            levelLabel = new Label_Level("Level 3");
+            // Fügt das Level-Label zur Welt hinzu
+            addObject(levelLabel, 858, 423);
+            // Verzögert das Spiel um 100 Frames
+            Greenfoot.delay(100);
+            // Entfernt das Level-Label aus der Welt
+            removeObject(levelLabel);
+            // Aktualisiert das Geld-Label mit dem zurückgesetzten Punktestand
             moneyLabel.setText("Money: " + score + " $");
+            // Setzt die Position des Spielers
+            spieler.setLocation(1116, 867);
+            // Setzt die Position und Rotation der Polizeifiguren
+            polizeis[0].setLocation(1380, 650);
+            polizeis[0].setRotation(0);
+            polizeis[1].setLocation(1380, 650);
+            polizeis[1].setRotation(0);
+            polizeis[2].setLocation(1380, 650);
+            polizeis[2].setRotation(0);
+            polizeis[3].setLocation(1380, 650);
+            polizeis[3].setRotation(0);
+            addObject(polizeis[4], 1380,650);
+            polizeis[4].setRotation(0);
+            addObject(polizeis[7], 1380,650);
+            polizeis[7].setRotation(0);
         }
-        if (packetCount ==9)    {
+
+        // Überprüft, ob die Anzahl der Pakete 9 erreicht hat
+        if (packetCount == 9) {
+            // Setzt den Punktestand zurück
             score = 0;
-            packetCount = 0;
+            // Erstellt ein neues Level-Label für Level 4
+            levelLabel = new Label_Level("Level 4");
+            // Fügt das Level-Label zur Welt hinzu
+            addObject(levelLabel, 858, 423);
+            // Verzögert das Spiel um 100 Frames
+            Greenfoot.delay(100);
+            // Entfernt das Level-Label aus der Welt
+            removeObject(levelLabel);
+            // Aktualisiert das Geld-Label mit dem zurückgesetzten Punktestand
             moneyLabel.setText("Money: " + score + " $");
+            // Setzt die Position des Spielers
+            spieler.setLocation(1116, 867);
+            // Setzt die Position und Rotation der Polizeifiguren
+            polizeis[0].setLocation(1380, 650);
+            polizeis[0].setRotation(0);
+            polizeis[1].setLocation(1380, 650);
+            polizeis[1].setRotation(0);
+            polizeis[2].setLocation(1380, 650);
+            polizeis[2].setRotation(0);
+            polizeis[3].setLocation(1380, 650);
+            polizeis[3].setRotation(0);
+            polizeis[4].setLocation(1380, 650);
+            polizeis[4].setRotation(0);
+            polizeis[7].setLocation(1380, 650);
+            polizeis[7].setRotation(0);
+            addObject(polizeis[8], 1380,650);
+            polizeis[8].setRotation(0);
         }
     }
     
