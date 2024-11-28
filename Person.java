@@ -13,7 +13,7 @@ public class Person extends SmoothOperator
 
     public Person(){
         GreenfootImage image = getImage();   // Holt das aktuelle Bild des Objekts
-        image.scale(50, 50);               // Skalieren des Bildes auf 100x100 Pixel
+        image.scale(37, 55);               // Skalieren des Bildes auf 100x100 Pixel
         setImage(image);                   // Setzt das skalierte Bild zurück auf das Objekt
     }
 

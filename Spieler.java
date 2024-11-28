@@ -3,9 +3,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, and Greenfoot)
 public class Spieler extends Person{
 
     private static boolean hatPaket; //guckt ob Spieler ein Paket hat
-    private double speed;
-    //private MyWorld world = Greenfoot.MyWorld;
-   
+    private double speed; //Geschwindigkeit des Spielers   
         
     public Spieler(double speeduebergabe){
         speed = speeduebergabe;
@@ -72,26 +70,28 @@ public class Spieler extends Person{
                     break;
                     //klappt
 
-                    case 7-1:
-                        world.addObject(new Dealer(100,100), 1569,888);
-                        break;
-                        //klappt
+                case 7-1:
+                    world.addObject(new Dealer(100,100), 1569,888);
+                    break;
+                    //klappt
                         
-                    case 8-1:
-                        world.addObject(new Dealer(100,100), 1152,132);
-                        break;
-                        //klappt
+                case 8-1:
+                    world.addObject(new Dealer(100,100), 1152,132);
+                    break;
+                    //klappt
 
-                    case 9-1:
-                        world.addObject(new Dealer(100,100), 1021,417);
-                        break;
-                        //klappt
+                case 9-1:
+                    world.addObject(new Dealer(100,100), 1021,417);
+                    break;
+                    //klappt
                         
-                    case 10-1:
-                        world.addObject(new Dealer(100,100), 208,673);
-                        break;
-                        //klappt
+                case 10-1:
+                    world.addObject(new Dealer(100,100), 208,673);
+                    break;
+                    //klappt
+
                 }
+
                 world.addObject(new Paket(75,75), 826, 78);
             }
 
@@ -119,6 +119,7 @@ public class Spieler extends Person{
             
             if (Greenfoot.isKeyDown("a") || Greenfoot.isKeyDown("left")) {
                 moveLeft();
+                setImage("charLinks.png");
                 if (canSee(Objekt.class)) {
                     moveRight();
                 }   
@@ -126,6 +127,7 @@ public class Spieler extends Person{
     
             if (Greenfoot.isKeyDown("d") || Greenfoot.isKeyDown("right")) {
                 moveRight();
+                setImage("charRechts.png");
                 if (canSee(Objekt.class)) {
                     moveLeft();
                 }
@@ -133,6 +135,8 @@ public class Spieler extends Person{
     
             if (Greenfoot.isKeyDown("w") || Greenfoot.isKeyDown("up")) {
                 moveUp();
+                setImage("charHinten.png");
+                //setImage(null);
                 if (canSee(Objekt.class)) {
                     moveDown();
                 }
@@ -140,6 +144,7 @@ public class Spieler extends Person{
     
             if (Greenfoot.isKeyDown("s") || Greenfoot.isKeyDown("down")) {
                 moveDown();
+                setImage("charVorne.png");   // Holt das aktuelle Bild des Objekts
                 if (canSee(Objekt.class)) {
                     moveUp();
                 }
