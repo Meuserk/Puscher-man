@@ -3,70 +3,73 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, and Greenfoot)
 public class Spieler extends Person{
 
     private static boolean hatPaket; //guckt ob Spieler ein Paket hat
-        private double speed;
+    private double speed;
+    //private MyWorld world = Greenfoot.MyWorld;
+   
         
-        public Spieler(double speeduebergabe){
-            speed = speeduebergabe;
-            hatPaket = false; //Spieler hat noch kein Paket aufgehoben
-            }
+    public Spieler(double speeduebergabe){
+        speed = speeduebergabe;
+        hatPaket = false; //Spieler hat noch kein Paket aufgehoben
+    }
         
-        public boolean canSee(Class clss){
-            Actor actor = getOneObjectAtOffset(0, 0, clss);
-            return actor != null;        
-        }
-        /**
-         * Act - do whatever the Spieler wants to do. This method is called whenever
-         * the 'Act' or 'Run' button gets pressed in the environment.
-         */
+    public boolean canSee(Class clss){
+        Actor actor = getOneObjectAtOffset(0, 0, clss);
+        return actor != null;        
+    }
     
-        public void act() {
-            if (isTouching(Paket.class) && !hatPaket) { //guckt ob Spieler Paket hat
-                hatPaket = true;            
-                removeTouching(Paket.class);//entfernt Paket nach Aufhebung
-                MyWorld world = (MyWorld) getWorld(); // genutzt, um die Methoden showPacketLabel(), updateScore(100) und hidePacketLabel() in MyWorld aufzurufen
-                world.showPacketLabel();
+    /**
+    * Act - do whatever the Spieler wants to do. This method is called whenever
+    * the 'Act' or 'Run' button gets pressed in the environment.
+    */
 
-            }
-            if (isTouching(Dealer.class) && hatPaket)   {
-                MyWorld world = (MyWorld) getWorld(); // genutzt, um die Methoden showPacketLabel(), updateScore(100) und hidePacketLabel() in MyWorld aufzurufen
-                world.updateScore(100);
-                hatPaket = false; //Paketstatus zurücksetzen
-                world.hidePacketLabel();
-                //greenfoot.Greenfoot.playSound("cash.wav");
-                sleepFor(10);
-                removeTouching(Dealer.class);
-                int Position = Greenfoot.getRandomNumber(10);
+    public void act() {
+        if (isTouching(Paket.class) && !hatPaket) { //guckt ob Spieler Paket hat
+            hatPaket = true;            
+            removeTouching(Paket.class);//entfernt Paket nach Aufhebung
+            MyWorld world = (MyWorld) getWorld();
+            world.showPacketLabel();
 
-                switch (Position) {
-                    case 1-1:
-                        world.addObject(new Dealer(100,100), 208, 129);
-                        break;
-                        //klappt
+        }
+        if (isTouching(Dealer.class) && hatPaket)   {
+            MyWorld world = (MyWorld) getWorld();
+            world.updateScore(100);
+            hatPaket = false; //Paketstatus zurücksetzen
+            world.hidePacketLabel();
+            //greenfoot.Greenfoot.playSound("cash.wav");
+            sleepFor(10);
+            removeTouching(Dealer.class);
+            int Position = Greenfoot.getRandomNumber(10);
+
+            switch (Position) {
+                case 1-1:
+                    world.addObject(new Dealer(100,100), 208, 129);
+                    break;
+                    //klappt
                         
-                    case 2-1:
-                        world.addObject(new Dealer(100,100), 372, 409);
-                        break;
-                        //klappt
+                case 2-1:
+                    world.addObject(new Dealer(100,100), 372, 409);
+                    break;
+                    //klappt
 
-                    case 3-1:
-                        world.addObject(new Dealer(100,100), 687, 660);
-                        break;
-                        //klappt
-                        
-                    case 4-1:
-                        world.addObject(new Dealer(100,100), 1168, 960);                        
-                        break;
-                        //klappt
+                case 3-1:
+                    world.addObject(new Dealer(100,100), 687, 660);
+                    break;
+                    //klappt
+                       
+                case 4-1:
+                    world.addObject(new Dealer(100,100), 1168, 960);                        
+                    break;
+                    //klappt
 
-                    case 5-1:
-                        world.addObject(new Dealer(100,100), 1497, 123);
-                        break;
-                        //klappt
+                case 5-1:
+                    world.addObject(new Dealer(100,100), 1497, 123);
+                    break;
+                    //klappt
                         
-                    case 6-1:
-                        world.addObject(new Dealer(100,100), 1572,416);
-                        break;
-                        //klappt
+                case 6-1:
+                    world.addObject(new Dealer(100,100), 1572,416);
+                    break;
+                    //klappt
 
                     case 7-1:
                         world.addObject(new Dealer(100,100), 1569,888);
