@@ -21,7 +21,7 @@ public class Polizei_L1 extends Polizei{
         int x = getX();  // Gibt die X-Koordinate des Objekts zurück
         int y = getY();  // Gibt die Y-Koordinate des Objekts zurück
         
-        if (canSee(Spieler.class)){
+        if (canSee(Spieler.class) && Spieler.getHatPaket()){
             Greenfoot.playSound("au.wav");
             Greenfoot.delay(15);
             super.eat(Spieler.class);
