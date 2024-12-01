@@ -18,6 +18,7 @@ public class MyWorld extends World{
     private Polizei[] polizeis; // Declare the array
     private int count;
     public int score;
+    private int level;
     
     
     /**
@@ -276,9 +277,14 @@ public class MyWorld extends World{
         //packetLabel wird entfernt
         removeObject(packetLabel); 
     }
+    public int getLevel() { //gibt den aktuellen level zurück
+        return level;
+    }
+
     public void Score ()    {
         score = 0;
         packetCount= 0;
+        level = 1;
         moneyLabel = new Label ("Money: "+ count +" $");
         addObject(moneyLabel, 80, 50);
     }
@@ -289,11 +295,12 @@ public class MyWorld extends World{
         packetCount += 1;
         // Aktualisiert das Geld-Label mit dem neuen Punktestand
         moneyLabel.setText("Money: " + score + " $");
-
         // Überprüft, ob die Anzahl der Pakete 3 erreicht hat
         if (packetCount == 3) {
             // Setzt den Punktestand zurück
             score = 0;
+            // Erhöht Levelstand
+            level = 2;
             // Erstellt ein neues Level-Label für Level 2
             levelLabel = new Label_Level("Level 2");
             // Fügt das Level-Label zur Welt hinzu
@@ -304,6 +311,8 @@ public class MyWorld extends World{
             removeObject(levelLabel);
             // Aktualisiert das Geld-Label mit dem zurückgesetzten Punktestand
             moneyLabel.setText("Money: " + score + " $");
+            // Setzt neues Bild für den Spieler
+            spieler.setImage(new GreenfootImage("RollerCharVorne.png"));
             // Setzt die Position des Spielers
             spieler.setLocation(1116, 867);
             // Setzt die Position und Rotation der Polizeifiguren
@@ -321,6 +330,8 @@ public class MyWorld extends World{
         if (packetCount == 6) {
             // Setzt den Punktestand zurück
             score = 0;
+            // Erhöht Levelstand
+            level = 3;
             // Erstellt ein neues Level-Label für Level 3
             levelLabel = new Label_Level("Level 3");
             // Fügt das Level-Label zur Welt hinzu
@@ -352,6 +363,8 @@ public class MyWorld extends World{
         if (packetCount == 9) {
             // Setzt den Punktestand zurück
             score = 0;
+            // Setzt Level zurück
+            level = 0;
             // Erstellt ein neues Level-Label für Level 4
             levelLabel = new Label_Level("Level 4");
             // Fügt das Level-Label zur Welt hinzu
