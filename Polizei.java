@@ -37,8 +37,8 @@ public class Polizei extends Person{
     
 
     public void anKreuzungWenden(){
-        int pixelNachTurn = 22;
-        int pixelVorTurn = 22;
+        int pixelNachTurn = 17;
+        int pixelVorTurn = 0;
     //hier wird das Wenden geregelt, basierend darauf, gegen welche Kreuzung
         //sie rennen
         //Zero degrees is towards the east, increases clockwise
@@ -134,7 +134,7 @@ public class Polizei extends Person{
         //Wendeaktion am Ende vom Highway
         else if(canSee(KreuzungF.class)){
             setRotation(getRotation()-90);
-            moveByPixel(96); //warum 96? so breit ist halt die Straße
+            moveByPixel(90); //warum 96? so breit ist halt die Straße
             setRotation(getRotation()-90);
         }
         
