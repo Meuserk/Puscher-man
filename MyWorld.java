@@ -251,7 +251,7 @@ public class MyWorld extends World{
         Objekt objekt6_6 = new Objekt(200,140);
         addObject(objekt6_6,1658,966);
 
-        spieler = new Spieler(15);
+        spieler = new Spieler(5);
         addObject(spieler,1116,867);
 
         Dealer dealer = new Dealer(100,100);
@@ -289,12 +289,14 @@ public class MyWorld extends World{
         addObject(moneyLabel, 80, 50);
     }
     public void updateScore(int points) {
+
         // Erhöht den Punktestand um die übergebenen Punkte
         score += points;
         // Erhöht die Anzahl der Pakete um 1
         packetCount += 1;
         // Aktualisiert das Geld-Label mit dem neuen Punktestand
         moneyLabel.setText("Money: " + score + " $");
+
         // Überprüft, ob die Anzahl der Pakete 3 erreicht hat
         if (packetCount == 3) {
             // Setzt den Punktestand zurück
@@ -394,5 +396,9 @@ public class MyWorld extends World{
             polizeis[8].setRotation(0);
         }
     }
+
+    // public int getLevel() {
+    //     return level;
+    // }
     
 }

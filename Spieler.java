@@ -5,6 +5,8 @@ public class Spieler extends Person{
     private double speed; //Geschwindigkeit des Spielers   
     private int packetCount;    
     private int level;
+
+
     public Spieler(double speeduebergabe){
         speed = speeduebergabe;
         hatPaket = false; //Spieler hat noch kein Paket aufgehoben
@@ -23,14 +25,17 @@ public class Spieler extends Person{
     */
 
     public void act() {
+        MyWorld world = (MyWorld) getWorld();
+
         if (isTouching(Paket.class) && !hatPaket) { //guckt ob Spieler Paket hat
             hatPaket = true;            
             removeTouching(Paket.class);//entfernt Paket nach Aufhebung
-            MyWorld world = (MyWorld) getWorld();
+            //MyWorld world = (MyWorld) getWorld();
             world.showPacketLabel();
         }
-        if (isTouching(Dealer.class) && hatPaket)   {
-            MyWorld world = (MyWorld) getWorld();
+
+        if (isTouching(Dealer.class) && hatPaket){
+            //MyWorld world = (MyWorld) getWorld();
             removeTouching(Dealer.class);
             world.updateScore(100);
             hatPaket = false; //Paketstatus zurücksetzen
@@ -93,8 +98,19 @@ public class Spieler extends Person{
 
                 }
                 world.addObject(new Paket(75,75), 826, 78);
-            }
-            checkKeyPress();
+        }
+        checkKeyPress();
+
+        if (world.getLevel() == 2){
+            speed = 8;
+        }
+        if (world.getLevel() == 3){
+            speed = 10;
+        }
+        if (world.getLevel() == 4){
+            speed = 12;
+        }
+
         }
         
         public void moveLeft() {

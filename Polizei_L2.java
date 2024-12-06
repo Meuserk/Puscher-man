@@ -8,7 +8,10 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Polizei_L2 extends Polizei{
 
+    public double speed = 10;
+    
     public Polizei_L2(int x, int y){
+        
         GreenfootImage image = getImage();   // Holt das aktuelle Bild des Objekts
         image.scale(x, y);               // Skalieren des Bildes auf 100x100 Pixel
         setImage(image);                     // Setzt das skalierte Bild zurück auf das Objekt
