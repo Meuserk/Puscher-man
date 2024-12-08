@@ -12,6 +12,7 @@ public class Polizei_L1 extends Polizei{
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public int counter = 0;
+    private GreenfootSound sirene = new GreenfootSound("sirene.mp3");
     public Polizei_L1(int x, int y){
         GreenfootImage image = getImage();   // Holt das aktuelle Bild des Objekts
         image.scale(x, y);               // Skalieren des Bildes auf 100x100 Pixel
@@ -20,9 +21,14 @@ public class Polizei_L1 extends Polizei{
     public void act(){
         int x = getX();  // Gibt die X-Koordinate des Objekts zurück
         int y = getY();  // Gibt die Y-Koordinate des Objekts zurück
+        if (!sirene.isPlaying()) {
+            sirene.setVolume(30); 
+            sirene.play(); // Sirene nur starten, wenn sie nicht läuft
+        }
         
         if (canSee(Spieler.class) && Spieler.getHatPaket()){
-            Greenfoot.playSound("au.wav");
+            sirene.stop();
+            //Greenfoot.playSound("au.wav");
             Greenfoot.delay(15);
             super.eat(Spieler.class);
             greenfoot.Greenfoot.stop();
@@ -35,7 +41,6 @@ public class Polizei_L1 extends Polizei{
             setRotation(180);
             setLocation(1300,650);
         }
-        
         
         move();
     }

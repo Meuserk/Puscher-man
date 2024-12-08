@@ -1,10 +1,12 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 public class Polizei extends Person{
-
+    /**GreenfootSound sirene = new GreenfootSound("sirene.mp3");
+    public void polizeisirene() {
+        sirene.playLoop();
+    }*/
     public void act(){
         move();
-        
     }
 
     public void move(){

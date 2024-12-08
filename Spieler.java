@@ -10,8 +10,9 @@ public class Spieler extends Person{
     public Spieler(double speeduebergabe){
         speed = speeduebergabe;
         hatPaket = false; //Spieler hat noch kein Paket aufgehoben
-          GreenfootImage image = new GreenfootImage("RollerCharVorne.png");
+        GreenfootImage image = new GreenfootImage("RollerCharVorne.png");
         image.scale(100, 100);
+        level = 1; // Standard-Level festlegen
     }
         
     public boolean canSee(Class clss){
@@ -26,6 +27,7 @@ public class Spieler extends Person{
 
     public void act() {
         MyWorld world = (MyWorld) getWorld();
+        checkKeyPress();
 
         if (isTouching(Paket.class) && !hatPaket) { //guckt ob Spieler Paket hat
             hatPaket = true;            
@@ -99,7 +101,6 @@ public class Spieler extends Person{
                 }
                 world.addObject(new Paket(75,75), 826, 78);
         }
-        checkKeyPress();
 
         if (world.getLevel() == 2){
             speed = 8;
@@ -136,12 +137,9 @@ public class Spieler extends Person{
                     setImage("charLinks.png");
                 }   
                 else if (level == 2) {
-                    setImage("RollerCharSeiteZwei.png");
-                    adjustImageSize();
-                }
+                    setImage("RollerCharSeiteZwei.png");                }
                 else if (level == 3) {
                     setImage("RollerCharSeiteZwei.png");
-                    adjustImageSize();
                 }
                 if (canSee(Objekt.class)) {
                     moveRight();
@@ -155,11 +153,9 @@ public class Spieler extends Person{
                 }   
                 else if (level == 2) {
                     setImage("RollerCharSeiteEins.png");
-                    adjustImageSize();
                 }
                 else if (level == 3) {
                     setImage("RollerCharSeiteEins.png");
-                    adjustImageSize();
                 }
                 if (canSee(Objekt.class)) {
                     moveLeft();
@@ -173,11 +169,9 @@ public class Spieler extends Person{
                 }   
                 else if (level == 2) {
                     setImage("RollerCharHinten.png");
-                    adjustImageSize();
                 }
                 else if (level == 3) {
                     setImage("RollerCharHinten.png");
-                    adjustImageSize();
                 }
                 if (canSee(Objekt.class)) {
                     moveDown();
@@ -191,11 +185,9 @@ public class Spieler extends Person{
                 }   
                 else if (level == 2) {
                     setImage("RollerCharVorne.png");
-                    adjustImageSize();
                 }
                 else if (level == 3) {
                     setImage("RollerCharVorne.png");
-                    adjustImageSize();
                 }
                 if (canSee(Objekt.class)) {
                     moveUp();
@@ -203,11 +195,12 @@ public class Spieler extends Person{
             }
     
         }
+        /**
         private void adjustImageSize() { // Methode um die Größe von Objekten zu ändern
             GreenfootImage image = getImage();
             image.scale(50, 60); // Größe anpassen
             setImage(image);
-        }
+        }*/
         public static boolean getHatPaket() {
             return hatPaket;
         }
