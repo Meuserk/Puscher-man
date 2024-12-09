@@ -137,9 +137,10 @@ public class Spieler extends Person{
                     setImage("charLinks.png");
                 }   
                 else if (level == 2) {
-                    setImage("RollerCharSeiteZwei.png");                }
+                    setImage("RollerCharSeiteZwei.png");                
+                }
                 else if (level == 3) {
-                    setImage("RollerCharSeiteZwei.png");
+                    setImage("SpielerAutoLinks.png");
                 }
                 if (canSee(Objekt.class)) {
                     moveRight();
@@ -155,7 +156,7 @@ public class Spieler extends Person{
                     setImage("RollerCharSeiteEins.png");
                 }
                 else if (level == 3) {
-                    setImage("RollerCharSeiteEins.png");
+                    setImage("SpielerAutoRechts.png");
                 }
                 if (canSee(Objekt.class)) {
                     moveLeft();
@@ -171,7 +172,7 @@ public class Spieler extends Person{
                     setImage("RollerCharHinten.png");
                 }
                 else if (level == 3) {
-                    setImage("RollerCharHinten.png");
+                    setImage("SpielerAutoUnten.png");
                 }
                 if (canSee(Objekt.class)) {
                     moveDown();
@@ -187,7 +188,7 @@ public class Spieler extends Person{
                     setImage("RollerCharVorne.png");
                 }
                 else if (level == 3) {
-                    setImage("RollerCharVorne.png");
+                    setImage("SpielerAutoOben.png");
                 }
                 if (canSee(Objekt.class)) {
                     moveUp();
