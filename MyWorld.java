@@ -397,8 +397,5 @@ public class MyWorld extends World{
         }
     }
 
-    // public int getLevel() {
-    //     return level;
-    // }
     
 }
