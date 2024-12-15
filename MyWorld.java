@@ -19,7 +19,10 @@ public class MyWorld extends World{
     private int count;
     public int score;
     private int level;
-    
+    private GreenfootSound theme1 = new GreenfootSound("level1_theme.mp3");
+    private GreenfootSound theme2 = new GreenfootSound("level2_theme.mp3");
+    private GreenfootSound theme3 = new GreenfootSound("level3_theme.mp3");
+    private GreenfootSound theme4 = new GreenfootSound("level4_theme.mp3");
     
     /**
      * Constructor for objects of class MyWorld.
@@ -266,7 +269,32 @@ public class MyWorld extends World{
         addObject(polizeis[2], 1380,650);
         
     }
-
+    public void act()   {
+        if (level == 1) {
+            theme1.play();
+        }
+        if (level == 2) {
+            //level1 musik wird gestoppt
+            theme1.stop();
+            Greenfoot.delay(1);
+            //level2 musik wird gespielt
+            theme2.play();
+        }
+        if (level == 3) {
+            //level2 musik wird gestoppt
+            theme2.stop();
+            Greenfoot.delay(1);
+            //level3 musik wird gespielt
+            theme3.play();
+        }
+        if (level == 4) {
+            //level3 musik wird gestoppt
+            theme3.stop();
+            Greenfoot.delay(1);
+            //level4 musik wird gespielt
+            theme4.play();
+        }
+    }
     public void showPacketLabel()   {
         //Falls das packetLabel noch nicht da ist, dann wird es hinzugefügt
         if (!getObjects(Label.class).contains(packetLabel)) {
@@ -344,6 +372,8 @@ public class MyWorld extends World{
             removeObject(levelLabel);
             // Aktualisiert das Geld-Label mit dem zurückgesetzten Punktestand
             moneyLabel.setText("Money: " + score + " $");
+            // Setzt neues Bild für den Spieler
+            spieler.setImage(new GreenfootImage("SpielerAutoLinks.png"));
             // Setzt die Position des Spielers
             spieler.setLocation(1116, 867);
             // Setzt die Position und Rotation der Polizeifiguren
@@ -372,7 +402,7 @@ public class MyWorld extends World{
             // Fügt das Level-Label zur Welt hinzu
             addObject(levelLabel, 858, 423);
             // Verzögert das Spiel um 100 Frames
-            Greenfoot.delay(100);
+            //Greenfoot.delay(100);
             // Entfernt das Level-Label aus der Welt
             removeObject(levelLabel);
             // Aktualisiert das Geld-Label mit dem zurückgesetzten Punktestand
@@ -396,6 +426,5 @@ public class MyWorld extends World{
             polizeis[8].setRotation(0);
         }
     }
-
     
 }
