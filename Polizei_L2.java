@@ -9,7 +9,11 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Polizei_L2 extends Polizei{
 
     public double speed = 10;
-    
+    private GreenfootSound sirene = new GreenfootSound("sirene.mp3");
+    private GreenfootSound theme1 = new GreenfootSound("level1_theme.mp3");
+    private GreenfootSound theme2 = new GreenfootSound("level2_theme.mp3");
+    private GreenfootSound theme3 = new GreenfootSound("level3_theme.mp3");
+    private GreenfootSound theme4 = new GreenfootSound("level4_theme.mp3");
     public Polizei_L2(int x, int y){
         
         GreenfootImage image = getImage();   // Holt das aktuelle Bild des Objekts
@@ -26,8 +30,7 @@ public class Polizei_L2 extends Polizei{
         int y = getY();  // Gibt die Y-Koordinate des Objekts zurück
         
         if (canSee(Spieler.class)&& Spieler.getHatPaket()){
-            Greenfoot.playSound("au.wav");
-            Greenfoot.delay(15);
+            stopAllSounds();
             super.eat(Spieler.class);
             greenfoot.Greenfoot.stop();
             //greenfoot.Greenfoot.setWorld(new GameOver());
@@ -41,5 +44,12 @@ public class Polizei_L2 extends Polizei{
         
         anKreuzungWenden();
         move();
+    }
+    private void stopAllSounds() {
+        sirene.stop();
+        theme1.stop();
+        theme2.stop();
+        theme3.stop();
+        theme4.stop();
     }
 }
