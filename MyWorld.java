@@ -43,15 +43,20 @@ public class MyWorld extends World{
         for (int i = 7; i < 10; i++) {
             polizeis[i] = new Polizei_L2(100,100);
         }
-
-        Score();
-        prepare();
-        
-        
+        prepare();       
     }
     
     private void prepare() {
 
+        spieler = new Spieler(5);
+        addObject(spieler, 0, 0);
+        
+    }
+
+    public void World_Generation(){
+        
+        Score();
+    
         //es folgt die Platzierung der Kreuzungsobjekte. Das ist messy und mit vielen
         //Koordinaten, also einfach nicht zu genau hingucken am Besten
 
@@ -254,8 +259,7 @@ public class MyWorld extends World{
         Objekt objekt6_6 = new Objekt(200,140);
         addObject(objekt6_6,1658,966);
 
-        spieler = new Spieler(5);
-        addObject(spieler,1116,867);
+        //addObject(spieler,1116,867);
 
         Dealer dealer = new Dealer(100,100);
         addObject(dealer, 208, 129);
@@ -267,7 +271,6 @@ public class MyWorld extends World{
         addObject(polizeis[0], 1380,650);
         addObject(polizeis[1], 1380,650);
         addObject(polizeis[2], 1380,650);
-        
     }
     public void act()   {
         if (level == 1) {
