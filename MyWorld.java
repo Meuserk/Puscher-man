@@ -297,6 +297,17 @@ public class MyWorld extends World{
             //level4 musik wird gespielt
             theme4.play();
         }
+        /**
+        //if (level == gameover){
+            //level musik wird gestoppt
+            theme1.stop();
+            theme2.stop();
+            theme3.stop();
+            theme4.stop();
+            Greenfoot.delay(1);
+            //gameover musik wird gespielt
+            gameover.play("gameover.mp3");
+        }*/
     }
     public void showPacketLabel()   {
         //Falls das packetLabel noch nicht da ist, dann wird es hinzugefügt
