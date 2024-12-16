@@ -133,7 +133,7 @@ public class Spieler extends Person{
         public void checkKeyPress() {
             MyWorld world = (MyWorld) getWorld();
 
-            if (Greenfoot.isKeyDown("ENTER")) {
+            if (Greenfoot.isKeyDown("ENTER") && getX() == 0 && getY() == 0) {
                 world.setBackground("PushermapFinalV1.png");
                 world.World_Generation();
                 setLocation(1116,867);
