@@ -17,15 +17,16 @@ public class Dealer extends Actor
      * Act - do whatever the Dealer wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    public void act() 
-    {
-        // if (isTouching(Spieler.class) && Spieler.getHatPaket()==true) { //guckt ob Spieler Paket hat
-        //     Spieler.setHatPaket(false);
-        //     MyWorld world = (MyWorld) getWorld(); // genutzt, um die Methoden showPacketLabel(), updateScore(100) und hidePacketLabel() in MyWorld aufzurufen
-        //     world.showPacketLabel();
-        //     world.updateScore(100);
-        //     spawn();
-        //     ;
-        // }
+    public void act(){
+        MyWorld world = (MyWorld) getWorld();
+        
+        System.out.println(world.getBackground());
+
+
+        if(world.getBackground().equals(new GreenfootImage("gameover-screen.png"))){
+            setImage("leer.png");
+            System.out.println(world.getBackground());
+
+        }
     }
 }
