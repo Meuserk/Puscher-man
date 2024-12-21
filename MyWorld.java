@@ -15,7 +15,7 @@ public class MyWorld extends World{
     private Label_Level levelLabel; // Label für "Level"
     private Spieler spieler; // Declare the Spieler object
     private Polizei[] polizeis; // Declare the array for the Polizei objects
-    private Kreuzung[] crossing; // Declare the array for the crossings
+    private Kreuzungsobjekt[] crossing; // Declare the array for the crossings
     private Dealer dealer; // Declare the dealer
     private int count; // Declare the count
     public int score; // Punktestand
@@ -45,24 +45,67 @@ public class MyWorld extends World{
         for (int i = 7; i < 10; i++) {
             polizeis[i] = new Polizei_L2(100,100);
         }
+        crossings();
         prepare();       
-    }
+    }  
     
     private void prepare() {
 
         spieler = new Spieler(5);
         addObject(spieler, 0, 0);
-        
+
     }
 
     public void World_Generation(){
         
         Score();
-    
-        //es folgt die Platzierung der Kreuzungsobjekte. Das ist messy und mit vielen
-        //Koordinaten, also einfach nicht zu genau hingucken am Besten
 
-        //kann überall hin, blau
+        addObject(crossing[0], 720, 115);   //Typ Kreuzung
+        addObject(crossing[1], 720,395);    //Typ Kreuzung    
+        addObject(crossing[2], 720,650);    //Typ Kreuzung    
+        addObject(crossing[3], 1191,395);   //Typ Kreuzung   
+        addObject(crossing[4], 1191,650);   //Typ Kreuzung   
+        addObject(crossing[5], 1532,395);   //Typ Kreuzung   
+
+        addObject(crossing[6], 245,115);    //Typ A
+        addObject(crossing[7], 245,650);    //Typ A    
+        addObject(crossing[8], 994,395);    //Typ A    
+        addObject(crossing[9], 245,395);    //Typ A    
+
+        addObject(crossing[10], 341,115);   //Typ B
+        addObject(crossing[11], 341,650);   //Typ B   
+        addObject(crossing[12], 341,395);   //Typ B   
+        addObject(crossing[13], 994,650);   //Typ B   
+
+        addObject(crossing[14], 1191,115);  //Typ C
+
+        addObject(crossing[15], 35,115);    //Typ D
+        addObject(crossing[16], 35,395);    //Typ D
+        addObject(crossing[17], 130,650);   //Typ D
+        addObject(crossing[18], 720,35);    //Typ D
+        addObject(crossing[19], 720,990);   //Typ D
+
+        addObject(crossing[20], 1700,875);  //Typ D
+        addObject(crossing[21], 1191,35);   //Typ D
+        addObject(crossing[22], 1191,990);  //Typ D
+        addObject(crossing[23], 1532,35);   //Typ D
+        addObject(crossing[24], 1532,990);  //Typ D
+        addObject(crossing[25], 1400,650);  //Typ D
+        addObject(crossing[26], 1700,650);  //Typ D
+        addObject(crossing[27], 1700,395);  //Typ D
+        addObject(crossing[28], 1130,875);  //Typ D
+
+        addObject(crossing[29], 1532,875);  //Typ E
+        addObject(crossing[30], 1532,650);  //Typ E
+        //addObject(crossing[31], 720,875);   //Typ E
+
+        addObject(crossing[32], 341,35);    //Typ F
+        addObject(crossing[33], 245,990);   //Typ F
+
+
+        /*
+
+        //kann überall hin fahren
         Kreuzung turnE = new Kreuzung();
         addObject(turnE,720,115);
         Kreuzung turnF = new Kreuzung();
@@ -76,7 +119,6 @@ public class MyWorld extends World{
         Kreuzung turnM = new Kreuzung();
         addObject(turnM,1532,395);
 
-        //kann nicht nach oben fahren
         KreuzungA turnA = new KreuzungA();
         addObject(turnA,245,115);
         KreuzungA turnC = new KreuzungA();
@@ -86,7 +128,7 @@ public class MyWorld extends World{
         KreuzungA turnP = new KreuzungA();
         addObject(turnP,245,395);
 
-        //kann nicht nach unten fahren
+
         KreuzungB turnB = new KreuzungB();
         addObject(turnB,341,115);
         KreuzungB turnD =new KreuzungB();
@@ -96,25 +138,11 @@ public class MyWorld extends World{
         KreuzungB turnH = new KreuzungB();
         addObject(turnH,994,650);
 
-        //kann nicht nach rechts fahren
+
         KreuzungC turnK = new KreuzungC();
         addObject(turnK,1191,115);
-        //KreuzungC turnT = new KreuzungC();
-        //addObject(turnT,1191,875);
-        //KreuzungC turnL = new KreuzungC();
-        //addObject(turnL,1532,115);
 
-        //kann nicht nach links fahren
-        KreuzungE turnR = new KreuzungE();
-        addObject(turnR,1532,875);
-        KreuzungE turnS = new KreuzungE();
-        addObject(turnS,1532,650);
-        KreuzungE turnU = new KreuzungE();
-        addObject(turnU,720,875);
 
-        //umdrehen
-        //KreuzungD turnaroundA = new KreuzungD();
-        //addObject(turnaroundA,245,35);
 
         KreuzungD turnaroundC = new KreuzungD();
         addObject(turnaroundC,35,115);
@@ -122,13 +150,11 @@ public class MyWorld extends World{
         addObject(turnaroundD,35,395);
         KreuzungD turnaroundE = new KreuzungD();
         addObject(turnaroundE,130,650);
-
-        //KreuzungD turnaroundG = new KreuzungD();
-        //addObject(turnaroundG,341,750);
         KreuzungD turnaroundH = new KreuzungD();
         addObject(turnaroundH,720,35);
         KreuzungD turnaroundI = new KreuzungD();
         addObject(turnaroundI,720,990);
+
         KreuzungD turnaroundJ = new KreuzungD();
         addObject(turnaroundJ,1700,875); //turnaround unten rechts
         KreuzungD turnaroundK = new KreuzungD();
@@ -148,14 +174,26 @@ public class MyWorld extends World{
         KreuzungD turnaroundR = new KreuzungD();
         addObject(turnaroundR,1130,875);
 
+
+        KreuzungE turnR = new KreuzungE();
+        addObject(turnR,1532,875);
+        KreuzungE turnS = new KreuzungE();
+        addObject(turnS,1532,650);
+        KreuzungE turnU = new KreuzungE();
+        addObject(turnU,720,875);
+
         KreuzungF turnaroundB = new KreuzungF();
         addObject(turnaroundB,341,35);
         KreuzungF turnaroundF = new KreuzungF();
         addObject(turnaroundF,245,990);
+        
+        */
 
-        /**Hindernisse werden hinzugefuegt und 
-         * auf die richtigen größen gebracht
-         */
+        /**
+        * Hindernisse werden hinzugefuegt und 
+        * auf die richtigen größen gebracht
+        */
+
         //1.Spalte
         Objekt objekt1_1 = new Objekt(337,130);
         addObject(objekt1_1,55,24);
@@ -324,7 +362,6 @@ public class MyWorld extends World{
     public int getLevel() { //gibt den aktuellen level zurück
         return level;
     }
-
     public void Score ()    {
         score = 0;
         packetCount= 0;
@@ -443,9 +480,39 @@ public class MyWorld extends World{
         }
     }
 
+    public void crossings(){
+        //Kreuzungen werden hinzugefügt
+        crossing = new Kreuzungsobjekt[35];
+        //kann überall hin fahren
+        for (int i = 0; i < 6; i++) {
+            crossing[i] = new Kreuzung();
+        }
+        //kann nicht nach oben fahren
+        for (int i = 6; i < 10 ; i++) {
+            crossing[i] = new KreuzungA();
+        }
+        //kann nicht nach unten fahren
+        for (int i = 10; i < 14; i++) {
+            crossing[i] = new KreuzungB();
+        }
+        //kann nicht nach rechts fahren
+        crossing[14] = new KreuzungC();
+        //umdrehen
+        for (int i = 15; i < 29; i++) {
+            crossing[i] = new KreuzungD();
+        }
+        //kann nicht nach links fahren
+        for (int i = 29; i < 32; i++) {
+            crossing[i] = new KreuzungE();
+        }
+
+        crossing[32] = new KreuzungF();
+        crossing[33] = new KreuzungF();
+
+    }
+
     public void remove_all() {
-        // Entfernt alle Objekte aus der Welt
-        //removeObjects(getObjects(Actor.class));
+        //Entfernt alle Objekte aus der Welt
         for(int i = 0; i < polizeis.length; i++) {
         polizeis[i].setImage("leer.png");
         }
@@ -457,7 +524,7 @@ public class MyWorld extends World{
         removeObject(moneyLabel);
         removeObject(packetLabel);
         for(int i = 0; i < crossing.length; i++) {
-            //removeObject(polizeis[i]);
+            removeObject(crossing[i]);
         }
     }
 }
