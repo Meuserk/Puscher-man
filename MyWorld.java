@@ -9,20 +9,22 @@ import java.util.*;
  */
 public class MyWorld extends World{
 
-
-    private int packetCount;
+    private int packetCount;   // Anzahl der Pakete
     private Label packetLabel;  // Label für "Package received"
     private Label moneyLabel;   // Label für "Money"
-    private Label_Level levelLabel;
-    private Spieler spieler;
-    private Polizei[] polizeis; // Declare the array
-    private int count;
-    public int score;
-    private int level;
-    private GreenfootSound theme1 = new GreenfootSound("level1_theme.mp3");
-    private GreenfootSound theme2 = new GreenfootSound("level2_theme.mp3");
-    private GreenfootSound theme3 = new GreenfootSound("level3_theme.mp3");
-    private GreenfootSound theme4 = new GreenfootSound("level4_theme.mp3");
+    private Label_Level levelLabel; // Label für "Level"
+    private Spieler spieler; // Declare the Spieler object
+    private Polizei[] polizeis; // Declare the array for the Polizei objects
+    private Kreuzung[] crossing; // Declare the array for the crossings
+    private Dealer dealer; // Declare the dealer
+    private int count; // Declare the count
+    public int score; // Punktestand
+    private int level; // Level
+    private GreenfootSound theme1 = new GreenfootSound("level1_theme.mp3"); // Musik für Level 1
+    private GreenfootSound theme2 = new GreenfootSound("level2_theme.mp3"); // Musik für Level 2
+    private GreenfootSound theme3 = new GreenfootSound("level3_theme.mp3"); // Musik für Level 3
+    private GreenfootSound theme4 = new GreenfootSound("level4_theme.mp3"); // Musik für Level 4
+
     
     /**
      * Constructor for objects of class MyWorld.
@@ -259,10 +261,8 @@ public class MyWorld extends World{
         Objekt objekt6_6 = new Objekt(200,140);
         addObject(objekt6_6,1658,966);
 
-        //addObject(spieler,1116,867);
-
-        Dealer dealer = new Dealer(100,100);
-        addObject(dealer, 208, 129);
+        //dealer = new Dealer(100,100);
+        //addObject(dealer, 208, 129);
 
         Paket paket = new Paket(75,75);
         addObject(paket,826,78);
@@ -297,6 +297,7 @@ public class MyWorld extends World{
             //level4 musik wird gespielt
             theme4.play();
         }
+
         /**
         //if (level == gameover){
             //level musik wird gestoppt
@@ -308,6 +309,7 @@ public class MyWorld extends World{
             //gameover musik wird gespielt
             gameover.play("gameover.mp3");
         }*/
+
     }
     public void showPacketLabel()   {
         //Falls das packetLabel noch nicht da ist, dann wird es hinzugefügt
@@ -410,7 +412,7 @@ public class MyWorld extends World{
             // Setzt den Punktestand zurück
             score = 0;
             // Setzt Level zurück
-            level = 0;
+            level = 4;
             // Erstellt ein neues Level-Label für Level 4
             levelLabel = new Label_Level("Level 4");
             // Fügt das Level-Label zur Welt hinzu
@@ -440,5 +442,23 @@ public class MyWorld extends World{
             polizeis[8].setRotation(0);
         }
     }
-    
+
+    public void remove_all() {
+        // Entfernt alle Objekte aus der Welt
+        //removeObjects(getObjects(Actor.class));
+        for(int i = 0; i < polizeis.length; i++) {
+        polizeis[i].setImage("leer.png");
+        }
+        spieler.setImage("leer.png");
+        //dealer.setImage("leer.png");
+        removeObject(dealer);
+        //spieler.remove_dealer();
+        spieler.deed();
+        removeObject(moneyLabel);
+        removeObject(packetLabel);
+        for(int i = 0; i < crossing.length; i++) {
+            //removeObject(polizeis[i]);
+        }
+    }
 }
+

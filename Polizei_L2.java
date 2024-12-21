@@ -10,6 +10,7 @@ public class Polizei_L2 extends Polizei{
 
     public double speed = 10;
     private GreenfootSound sirene = new GreenfootSound("sirene.mp3");
+
     private GreenfootSound theme1 = new GreenfootSound("level1_theme.mp3");
     private GreenfootSound theme2 = new GreenfootSound("level2_theme.mp3");
     private GreenfootSound theme3 = new GreenfootSound("level3_theme.mp3");
@@ -26,12 +27,21 @@ public class Polizei_L2 extends Polizei{
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act(){
+        if (!sirene.isPlaying()) {
+            sirene.setVolume(30); 
+            sirene.play(); // Sirene nur starten, wenn sie nicht läuft
+        }
         int x = getX();  // Gibt die X-Koordinate des Objekts zurück
         int y = getY();  // Gibt die Y-Koordinate des Objekts zurück
         
         if (canSee(Spieler.class)&& Spieler.getHatPaket()){
+            MyWorld world = (MyWorld) getWorld();
+            //Greenfoot.playSound("au.wav");
+            sirene.stop();
+            Greenfoot.delay(15);
             stopAllSounds();
             super.eat(Spieler.class);
+            world.setBackground("gameover-screen.png");
             greenfoot.Greenfoot.stop();
             //greenfoot.Greenfoot.setWorld(new GameOver());
         }

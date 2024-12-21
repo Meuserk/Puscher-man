@@ -31,9 +31,16 @@ public class Polizei_L1 extends Polizei{
         }
         
         if (canSee(Spieler.class) && Spieler.getHatPaket()){
+            MyWorld world = (MyWorld) getWorld(); 
+            sirene.stop();
+            Greenfoot.delay(15);
             stopAllSounds();
+
             super.eat(Spieler.class);
-            greenfoot.Greenfoot.stop();
+            world.setBackground("gameover-screen.png");
+            world.remove_all();
+            Greenfoot.delay(15);
+            Greenfoot.stop();
             //greenfoot.Greenfoot.setWorld(new GameOver());
         }
         
