@@ -41,6 +41,7 @@ public class Polizei_L2 extends Polizei{
             Greenfoot.delay(15);
             stopAllSounds();
             super.eat(Spieler.class);
+            world.setLevelToGameOver();
             world.setBackground("gameover-screen.png");
             greenfoot.Greenfoot.stop();
             //greenfoot.Greenfoot.setWorld(new GameOver());

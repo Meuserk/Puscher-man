@@ -37,6 +37,7 @@ public class Polizei_L1 extends Polizei{
             stopAllSounds();
 
             super.eat(Spieler.class);
+            world.setLevelToGameOver();
             world.setBackground("gameover-screen.png");
             world.remove_all();
             Greenfoot.delay(15);
@@ -61,3 +62,4 @@ public class Polizei_L1 extends Polizei{
         theme4.stop();
     }
 }
+
